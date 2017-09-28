@@ -1,0 +1,5 @@
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids\bin\Debug\RecklassRekkids.exe.config
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids\bin\Debug\RecklassRekkids.exe
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids\bin\Debug\RecklassRekkids.pdb
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids\obj\Debug\RecklassRekkids.exe
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids\obj\Debug\RecklassRekkids.pdb
