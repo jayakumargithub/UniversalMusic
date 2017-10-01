@@ -19,5 +19,35 @@ namespace RecklassRekkids.Process
             }
             return dateout + ' ' + splitDate[1] + ' ' + splitDate[2];
         }
+
+        public static string GetSuffix(DateTime dt)
+        {
+            string output; 
+            if (dt.Day % 10 == 1)
+            {
+                output = dt.Day + "st "; 
+            }
+            else if (dt.Day % 10 == 2)
+            {
+                output =  dt.Day + "nd "; 
+            }
+            else if (dt.Day % 10 == 3)
+            {
+                output =  dt.Day + "rd "; 
+            }
+            else
+            {
+                output =  dt.Day + "th "; 
+            }
+            var dateOutput = output + dt.Date.ToString("MMM yyyy");
+            return dateOutput;
+        }
+
+        public static string GetSuffix(DateTime? dt)
+        {
+            if (dt.HasValue)
+                return GetSuffix(dt.Value);
+            else return string.Empty;
+        }
     }
 }

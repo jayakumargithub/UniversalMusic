@@ -24,7 +24,7 @@ namespace RecklassRekkids.Process
                 var splitValue = s.Split(new char[] { '|' });
                 if (splitValue[0].ToString() == "Partner")
                     continue;
-                partnerContract.Add(splitValue[0].ToString(), splitValue[1].ToString());
+                partnerContract.Add(splitValue[0].ToLower(), splitValue[1].ToLower());
             }
             ProcessedContract = partnerContract;
         }
