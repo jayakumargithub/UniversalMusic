@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace RecklassRekkids.Process
 {
-    public class UserInputProcess
+    public interface IUserInputProcess
+    {
+        UserSerachCriteria UserSerachCriteria { get; set; }
+        List<string> Errors { get; set; }
+        bool IsUserInputValid { get; set; }
+        void Process();
+    }
+
+    public class UserInputProcess : IUserInputProcess
     {
         private readonly string _userInput;
         public UserSerachCriteria UserSerachCriteria { get; set; }
@@ -23,8 +31,8 @@ namespace RecklassRekkids.Process
 
         public void Process()
         {
-           
-            var userInput = _userInput.Split(new[] { ' ' });
+            IsUserInputValid = true;
+             var userInput = _userInput.Split(new[] { ' ' });
             if (userInput.Length == 1)
             {
                 Errors.Add("Input is not valid.");
@@ -38,11 +46,13 @@ namespace RecklassRekkids.Process
                                                   userInput[3]);
                 DateTime userDate;
                 var isValid = DateTime.TryParse(searchDatestring, out userDate);
+                
                 if (!isValid)
                 {
                     Errors.Add("Date is not valid. Please correct and try agian.");
                     IsUserInputValid = false;
                 }
+                else { UserSerachCriteria.SearchDate = userDate; }
             }
 
         }

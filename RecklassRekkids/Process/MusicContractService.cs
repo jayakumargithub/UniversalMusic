@@ -5,23 +5,22 @@ using System.Linq;
 
 namespace RecklassRekkids.Process
 {
-   public  class MusicContractFileProcess : IContractProcess
+    public interface IMusicContractService
+    { 
+        List<MusicContracts> ProcessContract(List<string> reader);
+    }
+
+    public  class MusicContractService : IMusicContractService
     {
-       private readonly List<string> _reader;
+       
        readonly IFormatProvider _culture = new CultureInfo("en-GB", true);
-        public object ProcessedContract { get; set; }
-
-        public MusicContractFileProcess(List<string> reader)
-       {
-           _reader = reader;
-            ProcessContract();
-       }
-
-       public void ProcessContract()
+         
+ 
+        public List<MusicContracts> ProcessContract(List<string> reader)
         {
             List<MusicContracts> musicContractList = new List<MusicContracts>();
 
-            foreach (var s in _reader)
+            foreach (var s in reader)
             {
                 var splitValue = s.Split('|');
                 if (splitValue[0] == "Artist")
@@ -46,7 +45,7 @@ namespace RecklassRekkids.Process
             }
 
 
-             ProcessedContract =  musicContractList;
+             return musicContractList;
         }
     }
 }

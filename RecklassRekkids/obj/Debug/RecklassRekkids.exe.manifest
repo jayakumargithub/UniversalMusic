@@ -42,24 +42,36 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RecklassRekkids.exe" size="15344">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Autofac.dll" size="217600">
+      <assemblyIdentity name="Autofac" version="4.6.1.0" publicKeyToken="17863AF14B0044DA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yz7gk8z3MEy+n4KO34ydYCRs/AfJc+1T0iLsR1cLaIo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RecklassRekkids.exe" size="16880">
       <assemblyIdentity name="RecklassRekkids" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BRFTgwmqH8iUKuYff/be4wgEYCUSn0HILuCszHnMEd4=</dsig:DigestValue>
+        <dsig:DigestValue>80FPpl7weNRzoOS2MAdpz5EEoSS7LtF6VtiToQA148M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="RecklassRekkids.exe.config" size="387">
+  <file name="RecklassRekkids.exe.config" size="749">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n0a5bgYBfyTCovUn9SsKn6A9SBVfEO1Puc+Bcw7Z6rA=</dsig:DigestValue>
+      <dsig:DigestValue>5E/oBcuXPt938zrzrBG7PvLqV5P51WraEbjZHOstHok=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TextFiles\DistributionPartnerContracts.txt" size="78">

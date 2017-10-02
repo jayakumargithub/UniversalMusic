@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecklassRekkids", "RecklassRekkids\RecklassRekkids.csproj", "{7BE00B7F-0FD2-4E01-9BF3-6709757BF67B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecklassRekkids.Tests", "RecklassRekkids.Tests\RecklassRekkids.Tests.csproj", "{4EB0C631-FE3A-4962-9524-5CCD81A36DAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7BE00B7F-0FD2-4E01-9BF3-6709757BF67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE00B7F-0FD2-4E01-9BF3-6709757BF67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE00B7F-0FD2-4E01-9BF3-6709757BF67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB0C631-FE3A-4962-9524-5CCD81A36DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB0C631-FE3A-4962-9524-5CCD81A36DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB0C631-FE3A-4962-9524-5CCD81A36DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB0C631-FE3A-4962-9524-5CCD81A36DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

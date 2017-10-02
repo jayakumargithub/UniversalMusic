@@ -61,6 +61,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -72,13 +76,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoFacContainer.cs" />
     <Compile Include="MusicContracts.cs" />
     <Compile Include="PartnerContracts.cs" />
     <Compile Include="Process\CommonUtility.cs" />
+    <Compile Include="Process\PrintService.cs" />
     <Compile Include="Process\ContractService.cs" />
-    <Compile Include="Process\IContractProcess.cs" />
-    <Compile Include="Process\MusicContractFileProcess.cs" />
-    <Compile Include="Process\PartnerContractFileProcess.cs" />
+    <Compile Include="Process\MusicContractService.cs" />
+    <Compile Include="Process\PartnerContractService.cs" />
+    <Compile Include="Process\RequestProcess.cs" />
     <Compile Include="Process\TextFileReader.cs" />
     <Compile Include="Process\UserInputProcess.cs" />
     <Compile Include="Program.cs" />
@@ -89,6 +95,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="RecklassRekkids_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

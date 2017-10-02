@@ -1,44 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RecklassRekkids
+namespace RecklassRekkids.Process
 {
-    public class TextFileReader
+    public interface ITextFileReaderService
+    { 
+        List<string> ReadTextFile(string filePath);
+
+
+    }
+    public class TextFileReaderService : ITextFileReaderService
     {
-        private readonly string _filePath;
-        public List<string> ContractString { get; set; }
 
-        public TextFileReader(string filePath)
+        public List<string> ReadTextFile(string filePath)
         {
-            ContractString = new List<string>();
-            _filePath = filePath;
-            ReadTextFile();
-        }
-
-        private void ReadTextFile()
-        {
+            List<string> contractString = new List<string>();
             try
             {
-                 
-                using (StreamReader sr = new StreamReader(_filePath))
+                using (StreamReader sr = new StreamReader(filePath))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        ContractString.Add(line);
+                        contractString.Add(line);
                     }
-
                 }
             }
-            catch (FileLoadException ex)
+            catch (FileNotFoundException ex)
             {
-                throw new FileLoadException(ex.Message);
+                throw new FileNotFoundException(ex.Message);
             }
-
+            return contractString;
         }
     }
 }

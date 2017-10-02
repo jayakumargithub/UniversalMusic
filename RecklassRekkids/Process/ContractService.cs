@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RecklassRekkids.Process
 {
-   public  class ContractService
+    public interface IContractService
+    {
+        List<MusicContracts> Process(List<MusicContracts> musicContract, string usage, DateTime startDate);
+    }
+
+    public  class ContractService : IContractService
     {
        public List<MusicContracts> Process(List<MusicContracts> musicContract, string usage, DateTime startDate)
        {

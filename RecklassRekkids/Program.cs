@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using System.Text.RegularExpressions;
+using Autofac;
 using RecklassRekkids.Process;
 
 namespace RecklassRekkids
@@ -13,13 +9,13 @@ namespace RecklassRekkids
     {
         static void Main(string[] args)
         {
-            string partnerFilePath = string.Empty;
+            var container = AutoFacContainer.BuildContainer();
+           
 
-
-
-            bool isMusicContractFileValid = false;
-            bool isPartnerContractFileValid = false;
+            string partnerContractFilePath = null;
             string musicContractFilePath;
+            bool isMusicContractFileValid = false;
+            bool isPartnerContractFileValid = false; 
             bool useDefaultFiles = false;
 
             Console.WriteLine("You want to use default contarct file? type 'Y' or 'N' ");
@@ -48,8 +44,8 @@ namespace RecklassRekkids
                 {
                     Console.WriteLine("Please Enter Partner Contract Text File Path");
                     Console.WriteLine();
-                    partnerFilePath = Console.ReadLine();
-                    if (!System.IO.File.Exists(partnerFilePath))
+                    partnerContractFilePath = Console.ReadLine();
+                    if (!System.IO.File.Exists(partnerContractFilePath))
                     {
                         Console.WriteLine("Partner contract file path is not valid!");
                         Console.WriteLine();
@@ -60,18 +56,16 @@ namespace RecklassRekkids
                     }
                 }
             }
-            else
+            else // if use wants to use default file then pick up from fixed location
             {
                 musicContractFilePath = ConfigurationManager.AppSettings["MusicContractFile"];
-                partnerFilePath = ConfigurationManager.AppSettings["PartnerContractFile"];
+                partnerContractFilePath = ConfigurationManager.AppSettings["PartnerContractFile"];
             }
-
             bool canContinue = true;
             if (useDefaultFiles || (isMusicContractFileValid && isPartnerContractFileValid))
-            {
-                UserSerachCriteria searchCriteria = new UserSerachCriteria();
+            { 
 
-                while (canContinue)
+                while (true)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     var msg = "Please enter search criteria. or Enter 'q' to  Quit.";
@@ -100,70 +94,33 @@ namespace RecklassRekkids
 
                     Console.WriteLine();
 
-                    //Reading the Partner contract text file
-                    TextFileReader partnerContractReader = new TextFileReader(partnerFilePath);
-                    var partnerContractText = partnerContractReader.ContractString;
-
-                    //Building the parter contract model
-                    IContractProcess partnerContractProcess = new PartnerContractFileProcess(partnerContractText);
-                    var partnerContactList = partnerContractProcess.ProcessedContract as Dictionary<string, string>;
-
-                    UserInputProcess userInputProcess = new UserInputProcess(searchPharse);
+                    IUserInputProcess userInputProcess = new UserInputProcess(searchPharse);
                     if (userInputProcess.Errors.Count > 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(string.Join("/r/n", userInputProcess.Errors.ToArray()));
-                        canContinue = userInputProcess.Errors.Count == 0;
+                        canContinue = false;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                     if (canContinue)
                     {
-
-
-                        //Reading the music contract text file
-                        TextFileReader musicContractReader = new TextFileReader(musicContractFilePath);
-                        var musicContractsText = musicContractReader.ContractString;
-
-                        //Building the music contract model 
-                        IContractProcess musicContractProcess = new MusicContractFileProcess(musicContractsText);
-                        var musicContracList = musicContractProcess.ProcessedContract as List<MusicContracts>;
-
-                        if (partnerContactList != null)
-                        {
-                            var partnerUsage =
-                                partnerContactList.SingleOrDefault(x => x.Key == searchCriteria.Partner).Value;
-
-                            ContractService contractService = new ContractService();
-                            var musicContracts = contractService.Process(musicContracList, partnerUsage,
-                                searchCriteria.SearchDate);
-
-                            if (musicContracts.Count > 0)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("----Here are  the results-----");
-                                Console.WriteLine();
-
-                                foreach (var a in musicContracts)
-                                {
-                                    Console.WriteLine(a.Artist + "|" + a.Title + "|" + partnerUsage + "|" +
-                                                      CommonUtility.GetSuffix(a.StartDate.Date) + "|" +
-                                                      CommonUtility.GetSuffix(a.EndDate?.Date));
-                                }
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine("No Results found!.");
-                            }
-                        }
-
+                        var musicContractService = container.Resolve<IMusicContractService>();
+                        var partnerContractService = container.Resolve<IPartnerContractService>();
+                        var contractService = container.Resolve<IContractService>();
+                        var musicContractTextReaderService = container.Resolve<ITextFileReaderService>();
+                        var partnerContractTextReaderService = container.Resolve<ITextFileReaderService>();
+                        var printService = container.Resolve<IPrintService>();
+                        IRequestProcess requestProcess = new RequestProcess(userInputProcess, musicContractService,partnerContractService, contractService,musicContractTextReaderService,partnerContractTextReaderService);
+                        var musicContractResults = requestProcess.Process(musicContractFilePath,partnerContractFilePath);
+                        string data;
+                        printService.Print(musicContractResults, out data); 
                     }
-                    //}
                     canContinue = true;
                 }
-            }
 
-            Console.ReadLine();
-        }
+            } 
+        } 
     }
 }
+

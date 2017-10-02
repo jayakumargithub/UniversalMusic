@@ -1,0 +1,15 @@
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\RecklassRekkids.Tests.dll.config
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\RecklassRekkids.Tests.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\RecklassRekkids.Tests.pdb
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\Castle.Core.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\Moq.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\nunit.framework.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\RecklassRekkids.exe
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\RecklassRekkids.pdb
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\nunit.framework.xml
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\obj\Debug\RecklassRekkids.Tests.csprojResolveAssemblyReference.cache
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\obj\Debug\RecklassRekkids.Tests.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\obj\Debug\RecklassRekkids.Tests.pdb
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\Moq.Contrib.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\Autofac.dll
+C:\UniversalMusic\GlobalRightsManagement\RecklassRekkids.Tests\bin\Debug\Autofac.xml
